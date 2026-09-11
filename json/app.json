@@ -1,0 +1,146 @@
+{
+  "name": "ai-predictive-maintenance-ibm-cloud",
+  "version": "1.0.0",
+  "description": "AI-Based Predictive Maintenance using Machine Learning, Streamlit, FastAPI and IBM Cloud",
+  "project_type": "machine-learning-web-application",
+  "frontend": {
+    "framework": "Streamlit",
+    "entrypoint": "frontend/app.py",
+    "port": 8501,
+    "start_command": "streamlit run frontend/app.py --server.address 0.0.0.0 --server.port 8501"
+  },
+  "backend": {
+    "framework": "FastAPI",
+    "entrypoint": "backend/main.py",
+    "port": 8000,
+    "start_command": "uvicorn backend.main:app --host 0.0.0.0 --port 8000"
+  },
+  "machine_learning": {
+    "algorithm": "Random Forest Classifier",
+    "training_script": "ml/train.py",
+    "prediction_script": "ml/predict.py",
+    "model_file": "models/predictive_maintenance_pipeline.joblib",
+    "target": "Machine failure"
+  },
+  "dataset": {
+    "name": "AI4I 2020 Predictive Maintenance Dataset",
+    "records": 10000,
+    "source": "UCI Machine Learning Repository / Kaggle",
+    "kaggle_url": "https://www.kaggle.com/datasets/shivamb/machine-predictive-maintenance-classification",
+    "uci_url": "https://archive.ics.uci.edu/dataset/601/ai4i",
+    "local_path": "data/ai4i2020.csv"
+  },
+  "input_features": [
+    "Type",
+    "Air temperature [K]",
+    "Process temperature [K]",
+    "Rotational speed [rpm]",
+    "Torque [Nm]",
+    "Tool wear [min]"
+  ],
+  "engineering_features": [
+    "Temperature Difference [K]",
+    "Mechanical Power [kW]",
+    "Load Index",
+    "Tool Wear Risk",
+    "Thermal Risk"
+  ],
+  "excluded_target_columns": [
+    "Machine failure",
+    "TWF",
+    "HDF",
+    "PWF",
+    "OSF",
+    "RNF",
+    "Failure Type"
+  ],
+  "features": [
+    "Machine Failure Prediction",
+    "Failure Probability",
+    "Machine Health Score",
+    "Risk Score",
+    "Risk Classification",
+    "Maintenance Priority",
+    "Maintenance Recommendation",
+    "Fleet Analytics",
+    "Batch Prediction",
+    "Interactive Visualizations",
+    "Feature Importance",
+    "Model Performance Metrics",
+    "REST API",
+    "CSV Prediction Report",
+    "IBM Cloud ML Deployment",
+    "IBM watsonx.ai Integration",
+    "IBM Cloud Object Storage Integration"
+  ],
+  "api": {
+    "health": "/health",
+    "model_info": "/model-info",
+    "prediction": "/predict",
+    "batch_prediction": "/batch-predict",
+    "documentation": "/docs"
+  },
+  "ibm_cloud": {
+    "platform": "IBM Cloud",
+    "ai_platform": "watsonx.ai",
+    "ml_service": "watsonx.ai Runtime",
+    "storage": "IBM Cloud Object Storage",
+    "deployment_type": "Online",
+    "scoring_api": true
+  },
+  "environment_variables": {
+    "BACKEND_URL": "FastAPI backend URL",
+    "USE_IBM": "true or false",
+    "IBM_API_KEY": "IBM Cloud API key",
+    "IBM_SCORING_URL": "IBM watsonx.ai online deployment scoring URL",
+    "IBM_PROJECT_ID": "IBM Cloud project ID",
+    "IBM_SPACE_ID": "IBM Cloud deployment space ID"
+  },
+  "security": {
+    "credentials_in_source": false,
+    "environment_file": ".env",
+    "environment_template": ".env.example",
+    "gitignore_credentials": true
+  },
+  "deployment": {
+    "local": {
+      "frontend_port": 8501,
+      "backend_port": 8000
+    },
+    "docker": {
+      "frontend": "Dockerfile.frontend",
+      "backend": "Dockerfile.backend",
+      "compose": "docker-compose.yml"
+    },
+    "cloud": {
+      "provider": "IBM Cloud",
+      "ml_platform": "watsonx.ai Runtime",
+      "storage": "IBM Cloud Object Storage"
+    }
+  },
+  "project_structure": {
+    "frontend": "frontend/",
+    "backend": "backend/",
+    "machine_learning": "ml/",
+    "models": "models/",
+    "data": "data/",
+    "reports": "reports/",
+    "scripts": "scripts/"
+  },
+  "model_evaluation": [
+    "Accuracy",
+    "Precision",
+    "Recall",
+    "F1 Score",
+    "ROC-AUC",
+    "PR-AUC",
+    "Confusion Matrix",
+    "Feature Importance"
+  ],
+  "status": {
+    "project": "AI Predictive Maintenance",
+    "version": "1.0.0",
+    "development_stage": "Cloud-ready prototype",
+    "production_ready": false
+  }
+}
